@@ -12,7 +12,7 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long userId;
 
     private String fullName;
     private String location;
@@ -21,21 +21,21 @@ public class User {
     private String email;
     private String password;
     private String mobile;
-    private String image;
+    private String profileImage;
     private String backgroundImage;
     private String bio;
-    private boolean reqUser;
-    private boolean loginWithGoogle;
+    private boolean isRequiredUser;
+    private boolean isLoginWithGoogle;
 
     @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Tweet> tweets = new ArrayList<>();
+    private List<Tweet> userTweets = new ArrayList<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Like> likes = new ArrayList<>();
+    private List<Like> userLikes = new ArrayList<>();
 
     @Embedded
-    private Verification verification;
+    private Verification userVerification;
 
     @JsonIgnore
     @ManyToMany
