@@ -9,6 +9,7 @@ import java.util.List;
 
 @Entity
 @Data
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,10 +29,10 @@ public class User {
     private boolean isLoginWithGoogle;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "tweetId", cascade = CascadeType.ALL)
     private List<Tweet> userTweets = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "likeId", cascade = CascadeType.ALL)
     private List<Like> userLikes = new ArrayList<>();
 
     @Embedded
